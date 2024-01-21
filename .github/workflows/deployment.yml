@@ -19,6 +19,7 @@ jobs:
 
     steps:
       - run: echo ${{ inputs.target-env}}    	
+      - run: echo ${{ vars.zzz}}      
       - run: echo "🎉 target evn ${{ inputs.target-env}}"
       - run: echo "🎉 target evn inputs.target-env"
       - run: echo "🍏 is Dev  ${{ inputs.target-env }} == 'Development'"
