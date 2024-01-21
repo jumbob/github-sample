@@ -19,6 +19,17 @@ jobs:
         run: |
           # Add your build commands here
 
+  deployment:
+    needs: build
+    strategy:
+      fail-fast: true
+      matrix:
+        target: [dev, stage, prod ]
+    uses: ./.github/workflows/deployment.yml
+    with:
+      target-env: ${{ matrix.target }}
+    secrets: inherit
+
   deploy-dev:
     needs: build
     runs-on: ubuntu-latest

@@ -1,0 +1,27 @@
+name: Reusable deployment workflow
+
+on:
+  workflow_call:
+    inputs:
+      target-env:
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    name: Deploy to ${{ inputs.target-env }}
+    permissions:
+      contents: none
+    runs-on: ubuntu-latest
+    environment:
+      name: ${{ inputs.target-env }}
+      # url: ${{ steps.step_id.outputs.url_output }}
+
+    steps:
+      - run: echo ${{ inputs.target-env}}    	
+      - run: echo "🎉 target evn ${{ inputs.target-env}}"
+      - run: echo "🎉 target evn inputs.target-env"
+      - run: echo "🍏 is Dev  ${{ inputs.target-env }} == 'Development'"
+      - run: echo "🐧 is Prod  ${{ inputs.target-env }} == 'Production'"
+
+     
