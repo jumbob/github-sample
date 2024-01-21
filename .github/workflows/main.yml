@@ -22,7 +22,7 @@ jobs:
   deployment:
     needs: build
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         target: [dev, stage, prod ]
     uses: ./.github/workflows/deployment.yml
